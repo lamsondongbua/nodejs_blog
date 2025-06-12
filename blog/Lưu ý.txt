@@ -1,0 +1,5 @@
+NODEJS không hỗ trợ viết HTML trực tiếp, nhưng vẫn cần gửi trang HTML động cho trình duyệt
+
+Backend cần render HTML động (ví dụ danh sách sản phẩm) => cần tới template engine 
+Template engine này thường dùng cho SSR vì backend xử lí rồi đưa ra giao diện luôn qua HTML động
+Còn bên CSR phải chia ra bên frontend và backend
