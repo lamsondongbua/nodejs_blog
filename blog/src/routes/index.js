@@ -3,12 +3,11 @@ const siteRouter = require('./site');
 const newsRouter  = require('./news');
 function route(app) {
   
-  
   //   app.get('/magazine', (req, res) => {
     //     return res.render('magazine');
     //   })
     
-    app.use('/magazine', magazineRouter)
+      app.use('/magazine', magazineRouter)
       
     //Tạo ví dụ query parameter
     // app.get('/search', (req,res) => {
@@ -18,7 +17,7 @@ function route(app) {
       // });
       
     
-    app.use('/news', newsRouter);
+      app.use('/news', newsRouter);
       
       // Tạo phương thức post cho trang search
       app.post('/search', (req,res) => {
