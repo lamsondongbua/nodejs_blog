@@ -8,6 +8,12 @@ const app = express();
 //chạy ở cổng nào?
 const port = 3002;
 
+const route = require('./routes');
+
+//đây là dòng xử lí form data qua thư viện body-parser của express trước khi post
+app.use(express.urlencoded({ extended: true }));
+
+
 //public là nơi lưu các tài nguyên tĩnh như ảnh, CSS ... nên mặc định chỉ cần khai báo public là lấy đc
 app.use(express.static(path.join(__dirname,'public')));
 
@@ -23,14 +29,13 @@ app.set('views', path.join(__dirname, 'resources/views'));
 //   return res.send('Hello World!')
 // });
 
-//
-app.get('/', (req, res) => {
-  return res.render('home');
-})
 
-app.get('/magazine', (req, res) => {
-  return res.render('magazine');
-})
+
+
+//Cấu hình route
+route(app);
+
+
 
 //lắng nghe và tạo port , truyền port vào localhost
 app.listen(port, () => {
