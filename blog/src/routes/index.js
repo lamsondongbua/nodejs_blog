@@ -1,6 +1,6 @@
 const magazineRouter = require('./magazine');
 const siteRouter = require('./site');
-
+const newsRouter  = require('./news');
 function route(app) {
   
   
@@ -17,7 +17,8 @@ function route(app) {
       //   return res.render('search');
       // });
       
-      
+    
+    app.use('/news', newsRouter);
       
       // Tạo phương thức post cho trang search
       app.post('/search', (req,res) => {
