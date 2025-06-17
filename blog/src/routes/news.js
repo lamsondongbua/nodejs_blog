@@ -5,6 +5,6 @@ const newsController = require('../app/controllers/NewsController');
 
 
 //tạo mọi đường dẫn liên quan đến news
-router.use('/', newsController.news);
+router.get('/', newsController.news);
 
 module.exports = router;

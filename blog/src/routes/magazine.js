@@ -7,7 +7,7 @@ const magazineController = require('../app/controllers/MagazineController');
 
 
 //tạo mọi đường dẫn liên quan đến magazine
-router.use('/:slug', magazineController.show);
-router.use('/', magazineController.index);
+router.get('/:slug', magazineController.show);
+router.get('/', magazineController.index);
 
 module.exports = router;
