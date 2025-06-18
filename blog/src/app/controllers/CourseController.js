@@ -14,6 +14,27 @@ class CourseController  {
             .catch(next);
 
     }
+    // [GET] /courses/create
+    create(req,res,next){
+        res.render('courses/create');
+    }
+    // [POST] /courses/repository
+    repository(req,res,next){
+        // res.json(req.body);
+
+        //thêm image
+        const formData = req.body;
+        formData.image = 'https://taec.edu.vn/wp-content/uploads/2023/08/1-Toeic-800-1-lo-trinh-01-01.jpg'
+        
+        //Cách đưa form data của phương thức POST vào DB
+        const course = new Course(formData);
+        course.save()
+            //chuyển hướng sang trang chi tiết khóa học
+            .then(() => res.redirect(`/`))
+            .catch(error => {
+                
+            })
+    }
 }   
 
 
