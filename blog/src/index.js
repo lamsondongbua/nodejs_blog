@@ -8,6 +8,8 @@ const morgan = require('morgan');
 const handlebars = require('express-handlebars');
 //@ts-ignore
 
+const methodOverride = require('method-override');
+
 //express trả về đối tượng app để xây dựng website
 const app = express();
 //chạy ở cổng nào?
@@ -30,8 +32,16 @@ app.use(express.static(path.join(__dirname,'public')));
 //sử dụng morgan lấy HTTP logger
 app.use(morgan('combined'));
 
+//do form update ko hỗ trợ method = "PUT" nên ta sử dụng thư viện này để  chuyển đổi từ POST ghi đè sang PUT khi update
+app.use(methodOverride('_method'));
+
 //Ví dụ về template-engine : handlebars
-app.engine('handlebars',handlebars());
+app.engine('handlebars',
+  handlebars({
+    helpers: {
+      sum: (a,b) => a+ b
+    }
+  }));
 app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, 'resources/views'));
 // //tạo route (đường đi) -> thay đổi được qua dấu / (localhost:3000/tin-tuc)

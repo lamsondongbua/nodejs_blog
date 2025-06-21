@@ -5,10 +5,11 @@ const courseController = require('../app/controllers/CourseController');
 
 // magazineController.index;
 
-
-//tạo mọi đường dẫn liên quan đến magazine
+router.put('/:id', courseController.update);
+router.get('/:id/edit', courseController.edit);
 router.get('/create', courseController.create);
 router.post('/repository', courseController.repository);
 router.get('/:slug', courseController.show);
+
 
 module.exports = router;

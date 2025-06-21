@@ -1,0 +1,30 @@
+<div class="mt-4">
+    <h2>My Courses</h2>
+    <table class="table mt-4">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Course's Name</th>
+                <th scope="col">Course's Level</th>
+                <th scope="col">Course's Beginning</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each courses}}
+
+            <tr>
+                <th scope="row">{{sum @index 1}}</th>
+                <td>{{this.name}}</td>
+                <td>{{this.level}}</td>
+                <td>{{this.createdAt}}</td>
+                <td>
+                    {{!-- tạo slug id trong edit.handlebars, course.js, CourseController.js --}}
+                    <a href="/courses/{{this._id}}/edit" class="btn btn-info">Modifies</a>
+                    <a href="" class="btn btn-dark">Delete</a>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>

@@ -14,11 +14,11 @@ class CourseController  {
             .catch(next);
 
     }
-    // [GET] /courses/create
+    // [GET] /courses/create => lấy thông tin các khóa học
     create(req,res,next){
         res.render('courses/create');
     }
-    // [POST] /courses/repository
+    // [POST] /courses/repository 
     repository(req,res,next){
         // res.json(req.body);
 
@@ -35,6 +35,21 @@ class CourseController  {
                 
             })
     }
+    // [GET] /courses/:id/edit => lấy dữ liệu vào form để update
+    edit(req,res,next) {
+        Course.findById(req.params.id)
+            .then(course => res.render('courses/edit',{
+                course: mongooseToObject(course)
+            }))
+            .catch(next)
+    }
+
+    // [PUT] /courses/:id => chỉnh sửa khóa học
+    update(req,res,next){
+        Course.updateOne({_id : req.params.id}, {...req.body, image: `<link>`})
+            .then(() => res.redirect('/me/stored/courses'))
+            .catch(next)
+    } 
 }   
 
 
